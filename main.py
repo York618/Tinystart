@@ -22,7 +22,7 @@ elif hour_now in Interval(18, 21):
 elif hour_now in Interval(22, 3):
     print('记得早点睡呀，'+ user_now)
 print('现在时间是：'+ time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-file_path = 'E:\运生\新建文件夹\\tiny_start\config.conf'
+file_path = 'config.conf'
 line_number = 1
 def get_line_context(files_path, lines_number):
      return linecache.getline(files_path, lines_number).strip()
