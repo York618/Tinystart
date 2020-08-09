@@ -1,8 +1,18 @@
-# Tiny_start config tool
+# Tiny_start config and install tool
 # Before running this config tool,you should check these softwares: 在运行配置工具之前，你需要检查这些软件
 # Python >=3.5 Python版本必须大于或等于3.5
 # requests >= 2.23 requests版本必须大于或等于2.23
+import urllib,os
+
+os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U')
+os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests')
+os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple interval')
+
 import requests
+url = "https://sourl.cn/FxkJXd"
+f=requests.get(url)
+with open("config.py","wb") as code:
+    code.write(f.content)
 
 configname = 'config.conf'
 print('Tiny_start 配置向导')
