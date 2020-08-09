@@ -9,10 +9,15 @@ os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests')
 os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple interval')
 
 import requests
-url = "https://sourl.cn/FxkJXd"
+text_url = "https://sourl.cn/FxkJXd"
 f=requests.get(url)
-with open("config.py","wb") as code:
+with open("ascii.txt","wb") as code:
     code.write(f.content)
+
+start_url = ""
+f_2=requests.get(start_url)
+with open('main.py',"wb") as code_2:
+    code_2.write(f_2.content)
 
 configname = 'config.conf'
 print('Tiny_start 配置向导')
