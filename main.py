@@ -7,27 +7,42 @@
 # requests >= 2.23 requests版本必须大于或等于2.23
 # interval >=1.0 interval版本必须大于或等于1.0
 import requests,linecache,time,getpass
-from interval import Interval
 
-user_now = getpass.getuser()
-hour_now = int(time.strftime("%H", time.localtime()))
-if hour_now in Interval(4, 9):
-    print('早上好，'+ user_now)
-elif hour_now in Interval(10, 12):
-    print('中午好，'+ user_now)
-elif hour_now in Interval(13, 17):
-    print('下午好，'+ user_now)
-elif hour_now in Interval(18, 21):
-    print('晚上好，'+ user_now)
-elif hour_now in Interval(22, 3):
-    print('记得早点睡呀，'+ user_now)
-print('现在时间是：'+ time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+import ext
+
+ext.greet_with_time()
 file_path = 'config.conf'
 line_number = 1
-def get_line_context(files_path, lines_number):
-     return linecache.getline(files_path, lines_number).strip()
-key = get_line_context(file_path, line_number)
+a_type = ext.get_line_context(file_path, line_number)
 line_number += 1
-lon = get_line_context(file_path, line_number)
+a_key = ext.get_line_context(file_path, line_number)
 line_number += 1
-lat = get_line_context(file_path, line_number)
+a_lon = ext.get_line_context(file_path, line_number)
+line_number += 1
+a_lat = ext.get_line_context(file_path, line_number)
+
+if a_type == '1':
+    weather_url = 'https://devapi.heweather.net/v7/weather/now?location='+ str(a_lon)+ ','+ str(a_lat)+ '&key='+ str(a_key)
+    weather_query = requests.get(weather_url)
+    weather_dict = weather_query.json()
+    weather_now = weather_dict['now']
+    print('\n现在天气：'+ weather_now['text'])
+    print('气温：'+ weather_now['temp'])
+    print('体感温度：'+ weather_now['feelsLike'])
+    print('风向：'+ weather_now['windDir'])
+    print('风速：'+ weather_now['windSpeed']+ 'km/s')
+    print('相对湿度：'+ weather_now['humidity']+ '%')
+    print('详细链接：'+ weather_dict['fxLink'])
+elif a_type == '2':
+    weather_url = 'https://api.heweather.net/v7/weather/now?location='+ str(a_lon)+ ','+ str(a_lat)+ '&key='+ str(a_key)
+    weather_query = requests.get(weather_url)
+    weather_dict = weather_query.json()
+    weather_now = weather_dict['now']
+    print('现在天气：'+ weather_now['text'])
+    print('气温：'+ weather_now['temp'])
+    print('体感温度：'+ weather_now['feelsLike'])
+    print('风向：'+ weather_now['windDir'])
+    print('风速：'+ weather_now['windSpeed']+ 'km/s')
+    print('相对湿度：'+ weather_now['humidity']+ '%')
+    print('详细链接：'+ weather_dict['fxLink'])
+

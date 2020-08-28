@@ -2,22 +2,7 @@
 # Before running this config tool,you should check these softwares: 在运行配置工具之前，你需要检查这些软件
 # Python >=3.5 Python版本必须大于或等于3.5
 # requests >= 2.23 requests版本必须大于或等于2.23
-import urllib,os
-
-os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U')
-os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests')
-os.system('pip install -i https://pypi.tuna.tsinghua.edu.cn/simple interval')
-
 import requests
-text_url = "https://sourl.cn/FxkJXd"
-f=requests.get(url)
-with open("ascii.txt","wb") as code:
-    code.write(f.content)
-
-start_url = ""
-f_2=requests.get(start_url)
-with open('main.py',"wb") as code_2:
-    code_2.write(f_2.content)
 
 configname = 'config.conf'
 print('Tiny_start 配置向导')
@@ -67,6 +52,7 @@ if lx == '1':
     jz = str(input('这是否正确？(y/n):'))
     if jz == 'y':
         with open(configname, 'w') as file_object:
+            file_object.write(lx + '\n')
             file_object.write(key +'\n')
             file_object.write(get_lon +'\n')
             file_object.write(get_lat +'\n')
