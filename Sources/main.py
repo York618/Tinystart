@@ -1,12 +1,13 @@
 # Tiny_start
-# A easy tool to know this world when you open the computer. 一个让你在打开电脑时了解这个世界的简单工具
+# A easy tool to know this world when you open the computer. 一个让你在打开电脑时了解这个世界的简
+# 单工具
 # No ADs,Just weather and news. 没有广告，只有天气和新闻
 # Before running this program,you should check these softwares: 在运行之前，你需要检查这些软件
 # Python >=3.5 Python版本必须大于或等于3.5
 # pip >=20 pip版本必须大于或等于20
 # requests >= 2.23 requests版本必须大于或等于2.23
 # interval >=1.0 interval版本必须大于或等于1.0
-import requests,linecache,time,getpass
+import requests
 
 import ext
 
