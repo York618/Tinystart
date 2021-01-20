@@ -2,14 +2,14 @@
 
 def get_line_context(files_path, lines_number):
     # Extension:Read Line In File , V1.0
-    # Writted by York618
+    # Written by York618
     # This is a necessary component
     import linecache
     return linecache.getline(files_path, lines_number).strip()
 
 def greet_with_time():
     # Extension:Greet With Time , V1.0
-    # Writted by York618
+    # Written by York618
     # This is a necessary component
     from interval import Interval
     import getpass,time
@@ -27,3 +27,9 @@ def greet_with_time():
         print('记得早点睡呀，'+ user_now)
     print('现在时间是：'+ time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 
+def install_extension(extensionname):
+    # install extension , V1.0
+    # Written by York618
+    # Get extensions for Tinystart from Github
+    import requests
+    ext_main = requests.get('https://raw.githubusercontent.com')
